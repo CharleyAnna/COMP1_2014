@@ -135,7 +135,19 @@ def GetPlayerName():
   return PlayerName
 
 def GetChoiceFromUser():
-  Choice = input('Do you think the next card will be higher than the last card (enter y or n)? ')
+  Valid = False
+  while not Valid:
+    Choice = input('Do you think the next card will be higher than the last card (enter Y or N)? ').lower()
+    if Choice == "y":
+      Valid = True
+    elif Choice == "n":
+      Valid = True
+    elif Choice == "yes":
+      Valid = True
+    elif Choice == "no":
+      Valid = True
+    else:
+      ("That was not a valid input, please try again")
   return Choice
 
 def DisplayEndOfGameMessage(Score):
