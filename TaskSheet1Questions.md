@@ -37,3 +37,18 @@ The additional variable is the `Valid` variable and it is a boolean datatype
 			END WHILE
 	END FUNCTION
 
+##Question 3(b)
+1.Which function is responsible for adding scores to the table?
+The `UpdateRecentScores()` function is responsible for adding new high scores to the table
+
+##Question 5
+1.What additional module will you need to import into the program?
+The `datetime` module will need to be imported
+
+2.Identify the four functions that will need changing
+*`DisplayRecentScores()`
+*`UpdateRecentScores()`
+*`PlayGame()`
+*`Main Program`
+
+
