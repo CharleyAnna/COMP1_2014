@@ -13,27 +13,27 @@ inside a `while` loop to ensure the user is asked repeatedly.
 The additional variable is the `Valid` variable and it is a boolean datatype
 
 ##Pseudo-Code
-FUNCTION GetPlayerName():
-  HighScore:String
-  Valid:Boolean
-  PlayerName:String
-  OUTPUT "Do you want to add your score to the high score table? (Y or N): "
-  HighScore <-- INPUT.lower()
-  OUTPUT " "
-  HighScore <-- HighScore[0]
-  IF HighScore == "y":
-    Valid <-- False
-    WHILE not Valid:
-	  OUTPUT "Please enter your name"
-      PlayerName <-- INPUT
-      IF PlayerName == '':
-        OUTPUT "You must enter something for your name!"
-      else:
-        Valid = True
-        RETURN PlayerName
-		END IF
-    else:
-    OUTPUT"Your score will not be added"
-  END WHILE
-END FUNCTION
+	FUNCTION GetPlayerName():
+		HighScore:String
+		Valid:Boolean
+		PlayerName:String
+		OUTPUT "Do you want to add your score to the high score table? (Y or N): "
+		HighScore <-- INPUT.lower()
+		OUTPUT " "
+		HighScore <-- HighScore[0]
+		IF HighScore == "y":
+			Valid <-- False
+			WHILE not Valid:
+				OUTPUT "Please enter your name"
+				PlayerName <-- INPUT
+				IF PlayerName == '':
+					OUTPUT "You must enter something for your name!"
+			else:
+				Valid = True
+				RETURN PlayerName
+			END IF
+		else:
+			OUTPUT"Your score will not be added"
+			END WHILE
+	END FUNCTION
 
