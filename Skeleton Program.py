@@ -1,3 +1,4 @@
+
 # Skeleton Program code for the AQA COMP1 Summer 2014 examination
 # this code should be used in conjunction with the Preliminary Material
 # written by the AQA Programmer Team
@@ -75,11 +76,26 @@ def DisplayMenu():
   print('3. Display recent scores')
   print('4. Reset recent scores')
   print()
-  print('Select an option from the menu (or enter q to quit): ', end='')
 
 def GetMenuChoice():
-  Choice = input()
-  print()
+  Valid = False
+  while not Valid:
+    Choice = input("Please select an option from the menu, or press q to quit: ").lower()
+    if Choice == "q":
+      Valid = True
+    elif Choice == "quit":
+      Choice = 'q'
+      Valid = True
+    elif Choice == "1":
+      Valid = True
+    elif Choice == "2":
+      Valid = True
+    elif Choice == "3":
+      Valid = True
+    elif Choice == "4":
+      Valid = True
+    else:
+      print("That was not a valid menu choice, please try again: ")
   return Choice
 
 def LoadDeck(Deck):
@@ -230,7 +246,7 @@ if __name__ == '__main__':
     Deck.append(TCard())
   for Count in range(1, NO_OF_RECENT_SCORES + 1):
     RecentScores.append(TRecentScore())
-  Choice = ''
+  Choice = None
   while Choice != 'q':
     DisplayMenu()
     Choice = GetMenuChoice()
