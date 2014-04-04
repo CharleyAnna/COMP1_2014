@@ -8,6 +8,7 @@
 ######test change#############
 
 import random
+import datetime
 
 NO_OF_RECENT_SCORES = 3
 
@@ -207,9 +208,9 @@ def DisplayRecentScores(RecentScores):
   print()
   print('Recent Scores: ')
   print()
-  print("{0:^0} {1:50}".format("Name:","Score:"))
+  print("{0:^0} {1:^10}".format("Name:","Score:"))
   for Count in range(1, NO_OF_RECENT_SCORES + 1):
-    print("{0:^0} {1:50}".format(RecentScores[Count].Name, RecentScores[Count].Score))
+    print("{0:^0} {1:^10}".format(RecentScores[Count].Name, RecentScores[Count].Score))
   print()
   print('Press the Enter key to return to the main menu')
   input()
