@@ -49,6 +49,9 @@ The `datetime` module will need to be imported
 *`DisplayRecentScores()`
 *`UpdateRecentScores()`
 *`PlayGame()`
-*`Main Program`
+*`Main Program
+
+3.How do you convert a string in the format DD/MM/YY (e.g. 14/08/93) to a date type in Python?
+You can convert using `
 
 
