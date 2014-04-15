@@ -52,6 +52,6 @@ The `datetime` module will need to be imported
 *`Main Program
 
 3.How do you convert a string in the format DD/MM/YY (e.g. 14/08/93) to a date type in Python?
-You can convert using `
+You can convert from string to date type using `datetime.strptime()` 
 
 
