@@ -48,10 +48,19 @@ The `datetime` module will need to be imported
 2.Identify the four functions that will need changing
 *`DisplayRecentScores()`
 *`UpdateRecentScores()`
-*`PlayGame()`
-*`Main Program
+*`TRecentScore()`
+
 
 3.How do you convert a string in the format DD/MM/YY (e.g. 14/08/93) to a date type in Python?
-You can convert from string to date type using `datetime.strptime()` 
+You can convert from string to date type using `datetime.strftime()` 
 
+##Additional Task
+1. Describe each variable in your own words:
+	*Fixed Value - A variable that is created which requires no calculation. It doesn't change.
+	*Stepper - A variable that is used to count, it increases once it goes round a loop.
+	*Most Recent Holder - A variable that holds the value that has been encountered most recently.
+	*Most Wanted Holder - A variable that holds the value that is most appropriate
+	*Gatherer - A variable that adds together all values that it has come across throughout the program
+	
+	
 
