@@ -21,6 +21,7 @@ class TRecentScore():
   def __init__(self):
     self.Name = ''
     self.Score = 0
+    self.Date = ' '
 
 Deck = [None]
 RecentScores = [None]
@@ -208,16 +209,18 @@ def DisplayRecentScores(RecentScores):
   print()
   print('Recent Scores: ')
   print()
-  print("{0:^0} {1:^10} {2:^10}".format("Name:","Score:", "Date:"))
+  print("Name".ljust(10), "Date".ljust(10),"Score")
+  print()
   for Count in range(1, NO_OF_RECENT_SCORES + 1):
-    date = date.today()
-    print("{0:^0} {1:^10} {2:^10}".format(RecentScores[Count].Name, RecentScores[Count].Score, date))
+    print(RecentScores[Count].Name.ljust(10), RecentScores[Count].Date.ljust(10), RecentScores[Count].Score)
   print()
   print('Press the Enter key to return to the main menu')
   input()
   print()
 
 def UpdateRecentScores(RecentScores, Score):
+  today = datetime.date.today()
+  Date = today.strftime("%d/%m/%y")
   PlayerName = GetPlayerName()
   FoundSpace = False
   Count = 1
@@ -233,6 +236,7 @@ def UpdateRecentScores(RecentScores, Score):
     Count = NO_OF_RECENT_SCORES
   RecentScores[Count].Name = PlayerName
   RecentScores[Count].Score = Score
+  RecentScores[Count].Date = Date
 
 def PlayGame(Deck, RecentScores):
   LastCard = TCard()
