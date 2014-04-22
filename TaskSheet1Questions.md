@@ -56,11 +56,11 @@ You can convert from string to date type using `datetime.strftime()`
 
 ##Additional Task
 1. Describe each variable in your own words:
-	*Fixed Value - A variable that is created which requires no calculation. It doesn't change.
-	*Stepper - A variable that is used to count, it increases once it goes round a loop.
-	*Most Recent Holder - A variable that holds the value that has been encountered most recently.
-	*Most Wanted Holder - A variable that holds the value that is most appropriate
-	*Gatherer - A variable that adds together all values that it has come across throughout the program
+	-Fixed Value - A variable that is created which requires no calculation. It doesn't change.
+	-Stepper - A variable that is used to count, it increases once it goes round a loop.
+	-Most Recent Holder - A variable that holds the value that has been encountered most recently.
+	-Most Wanted Holder - A variable that holds the value that is most appropriate
+	-Gatherer - A variable that adds together all values that it has come across throughout the program
 	
 	
 
