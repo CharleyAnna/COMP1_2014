@@ -77,6 +77,7 @@ def DisplayMenu():
   print('2. Play game (without shuffle)')
   print('3. Display recent scores')
   print('4. Reset recent scores')
+  print('5. Options')
   print()
 
 def GetMenuChoice():
@@ -96,10 +97,52 @@ def GetMenuChoice():
       Valid = True
     elif Choice == "4":
       Valid = True
+    elif Choice == "5":
+      Valid = True
     else:
       print("That was not a valid menu choice, please try again: ")
   return Choice
 
+def DisplayOptionsMenu():
+  print()
+  print('OPTIONS MENU')
+  print()
+  print('1. Set ace to be HIGH or LOW')
+  print()
+
+def GetOptionChoice():
+  OptionChoice = input('Select an option from the menu or press Q to quit: ')
+  print()
+  return OptionChoice
+
+def SetOptions(OptionChoice):
+  Valid = False
+  while not Valid:
+    if OptionChoice == "1":
+      Valid = True
+      SetAceHighOrLow()
+    elif OptionChoice == "q" or OptionChoice == "Q":
+      Valid = True
+    else:
+      print("That was not a valid menu choice please try again: ")
+      print()
+      OptionChoice = input('Select an option from the menu or press Q to quit: ')
+      
+def SetAceHighOrLow():
+  AceRank = input("Do you want the ace to be (H)igh or (L)ow: ")
+  Valid = False
+  while not Valid:
+    if AceRank == "h" or AceRank == "H":
+      AceRank = "h"
+      Valid = True
+    elif AceRank == "l" or AceRank == "L":
+      AceRank = "l"
+      Valid = True
+    else:
+      print("That was not a valid input, please try again")
+      print()
+      AceRank = input("Do you want the ace to be (H)igh or (L)ow: ")
+  
 def LoadDeck(Deck):
   CurrentFile = open('deck.txt', 'r')
   Count = 1
@@ -169,7 +212,6 @@ def GetPlayerName():
   else:
     print("Your score will not be added")
   
-
 def GetChoiceFromUser():
   Valid = False
   while not Valid:
@@ -290,3 +332,7 @@ if __name__ == '__main__':
       DisplayRecentScores(RecentScores)
     elif Choice == '4':
       ResetRecentScores(RecentScores)
+    elif Choice == "5":
+      DisplayOptionsMenu()
+      OptionChoice = GetOptionChoice()
+      SetOptions(OptionChoice)
