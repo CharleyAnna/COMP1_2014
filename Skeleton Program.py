@@ -176,12 +176,16 @@ def GetChoiceFromUser():
     Choice = input('Do you think the next card will be higher than the last card (enter Y or N)? ').lower()
     if Choice == "y":
       Valid = True
+      Choice = "y"
     elif Choice == "n":
       Valid = True
+      Choice = "n"
     elif Choice == "yes":
       Valid = True
+      Choice = "y"
     elif Choice == "no":
       Valid = True
+      Choice = "y"
     else:
       ("That was not a valid input, please try again")
   return Choice
