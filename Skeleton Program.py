@@ -55,6 +55,8 @@ def GetRank(RankNo):
     Rank = 'Queen'
   elif RankNo == 13:
     Rank = 'King'
+  elif RankNo == 14:
+    Rank = 'Ace'
   return Rank
 
 def GetSuit(SuitNo):
@@ -129,14 +131,13 @@ def SetOptions(OptionChoice):
       OptionChoice = input('Select an option from the menu or press Q to quit: ')
       
 def SetAceHighOrLow():
-  AceRank = input("Do you want the ace to be (H)igh or (L)ow: ")
+  AceRank = input("Do you want the ace to be (H)igh or (L)ow: ").lower()
+  AceRank = AceRank[0]
   Valid = False
   while not Valid:
-    if AceRank == "h" or AceRank == "H":
-      AceRank = "h"
+    if AceRank == "h":
       Valid = True
-    elif AceRank == "l" or AceRank == "L":
-      AceRank = "l"
+    elif AceRank == "l":
       Valid = True
     else:
       print("That was not a valid input, please try again")
