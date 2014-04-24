@@ -46,20 +46,58 @@ The `UpdateRecentScores()` function is responsible for adding new high scores to
 The `datetime` module will need to be imported
 
 2.Identify the four functions that will need changing
-*`DisplayRecentScores()`
-*`UpdateRecentScores()`
-*`TRecentScore()`
+`DisplayRecentScores()`
+`UpdateRecentScores()`
+`TRecentScore()`
 
 
 3.How do you convert a string in the format DD/MM/YY (e.g. 14/08/93) to a date type in Python?
 You can convert from string to date type using `datetime.strftime()` 
 
-##Additional Task
+##Additional Task - Variable Roles
 1. Describe each variable in your own words:
 	Fixed Value - A variable that is created which requires no calculation. It doesn't change.
 	Stepper - A variable that is used to count, it increases once it goes round a loop.
 	Most Recent Holder - A variable that holds the value that has been encountered most recently.
 	Most Wanted Holder - A variable that holds the value that is most appropriate
 	Gatherer - A variable that adds together all values that it has come across throughout the program
-	Transformation - A variable 
+	Transformation - A variable that gets its value from calculations of other variables 
+	Follower - A variable that gets its value from another older variable
+	Temporary - A variable that holds its value for a short time.
+
+2. Give an example of variable from the program code for each variable role:
+	Fixed Value - `NO_OF_RECENT_SCORES`
+	Stepper - `Count`
+	Most Recent Holder - `Choice`
+	Most Wanted Holder - `Score`
+	Gatherer - `Score`
+	Transformation - `Score`
+	Follower - 
+	Temporary - `Count`
+	
+##Additional Task - Functions And Parameters
+1.Describe the difference between passing by value and passing by reference in your own words:
+	Only lists and records are passed by value, all other data types are passed by reference. When you pass by value, a copy of the 
+	data is passed into the function so you are not working on the original data, this is why we must return the variable at the end
+	of a function so that we can update the original. When we pass by reference, you are woking on the original data, when you change
+	the data within a function you are changing the original so there is no need to return the variable at the end of a function.
+
+2. For each function in the program identify the mechanism using to pass each parameter:
+   GetRank Function - RankNo is passed by value
+   GetSuit Function - SuitNo is passed by value
+   LoadDeck Function - Deck is passed by reference
+   ShuffleDeck Function - Deck is passed by reference
+   DisplayCard Function - ThisCard is passed by reference
+   GetCard Function - ThisCard, Deck and NoOfCardsTurnedOver are all passed by reference 
+   IsNextCardHigher Function - LastCard and NextCard both passed by value
+   DisplayEndOfGameMessage Function - Score is passed by reference
+   DisplayCorrectGuessMessage Function - Score is passed by reference
+   ResetRecentScores Function - RecentScores is passed by reference
+   DisplayRecentScores Function - RecentScores is passed by reference
+   UpdateRecentScores Function - RecentScores and Score are both passed by reference
+   PlayGame Function - Deck and RecentScores are bother passed by reference
+   
+   
+	
+
 	
