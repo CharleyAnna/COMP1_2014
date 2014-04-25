@@ -26,10 +26,11 @@ class TRecentScore():
 Deck = [None]
 RecentScores = [None]
 Choice = ''
+AceRank = False
 
 def GetRank(RankNo):
   Rank = ''
-  if RankNo == 1:
+  if RankNo == 1 or RankNo == 14:
     Rank = 'Ace'
   elif RankNo == 2:
     Rank = 'Two'
@@ -55,8 +56,6 @@ def GetRank(RankNo):
     Rank = 'Queen'
   elif RankNo == 13:
     Rank = 'King'
-  elif RankNo == 14:
-    Rank = 'Ace'
   return Rank
 
 def GetSuit(SuitNo):
@@ -118,6 +117,7 @@ def GetOptionChoice():
   return OptionChoice
 
 def SetOptions(OptionChoice):
+  global AceRank
   Valid = False
   while not Valid:
     if OptionChoice == "1":
@@ -129,22 +129,29 @@ def SetOptions(OptionChoice):
       print("That was not a valid menu choice please try again: ")
       print()
       OptionChoice = input('Select an option from the menu or press Q to quit: ')
+    
       
 def SetAceHighOrLow():
-  AceRank = input("Do you want the ace to be (H)igh or (L)ow: ").lower()
-  AceRank = AceRank[0]
+  global AceRank
+  HighOrLow = input("Do you want the ace to be (H)igh or (L)ow: ").lower()
+  HighOrLow = HighOrLow[0]
   Valid = False
   while not Valid:
-    if AceRank == "h":
+    if HighOrLow == "h":
       Valid = True
-    elif AceRank == "l":
+      AceRank = True
+    elif HighOrLow == "l":
       Valid = True
+      AceRank = False
     else:
       print("That was not a valid input, please try again")
       print()
-      AceRank = input("Do you want the ace to be (H)igh or (L)ow: ")
+      HighOrLow= input("Do you want the ace to be (H)igh or (L)ow: ")
+    print(AceRank)
+    
   
 def LoadDeck(Deck):
+  global AceRank
   CurrentFile = open('deck.txt', 'r')
   Count = 1
   while True:
@@ -153,8 +160,11 @@ def LoadDeck(Deck):
       CurrentFile.close()
       break
     Deck[Count].Suit = int(LineFromFile)
-    LineFromFile = CurrentFile.readline()
     Deck[Count].Rank = int(LineFromFile)
+    LineFromFile = CurrentFile.readline()
+    if AceRank == True and Deck[Count].Rank == 1:
+        print("Hello")
+        Deck[Count].Rank = 14
     Count = Count + 1
  
 def ShuffleDeck(Deck):
@@ -256,10 +266,10 @@ def DisplayRecentScores(RecentScores):
   print()
   print('Recent Scores: ')
   print()
-  print("Name".ljust(10), "Date".ljust(10),"Score")
+  print("{0:<10} {1:<10} {2:<10}".format("Name", "Date" ,"Score"))
   print()
   for Count in range(1, NO_OF_RECENT_SCORES + 1):
-    print(RecentScores[Count].Name.ljust(10), RecentScores[Count].Date.ljust(10), RecentScores[Count].Score)
+    print("{0:<10} {1:<10} {2:<10}".format(RecentScores[Count].Name.ljust(10), RecentScores[Count].Date.ljust(10), RecentScores[Count].Score))
   print()
   print('Press the Enter key to return to the main menu')
   input()
@@ -313,6 +323,7 @@ def PlayGame(Deck, RecentScores):
     DisplayEndOfGameMessage(51)
     UpdateRecentScores(RecentScores, 51)
 
+
 if __name__ == '__main__':
   for Count in range(1, 53):
     Deck.append(TCard())
@@ -323,7 +334,7 @@ if __name__ == '__main__':
     DisplayMenu()
     Choice = GetMenuChoice()
     if Choice == '1':
-      LoadDeck(Deck)
+      qLoadDeck(Deck)
       ShuffleDeck(Deck)
       PlayGame(Deck, RecentScores)
     elif Choice == '2':
