@@ -79,6 +79,7 @@ def DisplayMenu():
   print('3. Display recent scores')
   print('4. Reset recent scores')
   print('5. Options')
+  print('6. Save high scores')
   print()
 
 def GetMenuChoice():
@@ -314,6 +315,10 @@ def UpdateRecentScores(RecentScores, Score):
   RecentScores[Count].Name = PlayerName
   RecentScores[Count].Score = Score
   RecentScores[Count].Date = Date
+
+def SaveScores(RecentScores):
+  with open ("RecentScores.txt", mode = "wb") as my_file:
+    finished = False
 
 def PlayGame(Deck, RecentScores):
   LastCard = TCard()
