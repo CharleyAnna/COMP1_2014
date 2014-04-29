@@ -160,10 +160,9 @@ def LoadDeck(Deck):
       CurrentFile.close()
       break
     Deck[Count].Suit = int(LineFromFile)
-    Deck[Count].Rank = int(LineFromFile)
     LineFromFile = CurrentFile.readline()
+    Deck[Count].Rank = int(LineFromFile)
     if AceRank == True and Deck[Count].Rank == 1:
-        print("Hello")
         Deck[Count].Rank = 14
     Count = Count + 1
  
@@ -262,6 +261,27 @@ def ResetRecentScores(RecentScores):
     RecentScores[Count].Name = ''
     RecentScores[Count].Score = 0
 
+def BubbleSortScores(RecentScores):
+    list_length = len(RecentScores)
+    swap_made = True
+    while swap_made == True:
+        swap_made = False
+        list_length = list_length-1
+        for count in range (1,list_length):
+            if RecentScores[count].Score < RecentScores[count+1].Score:
+                tempScore = RecentScores[count].Score
+                tempDate = RecentScores[count].Date
+                tempName = RecentScores[count].Name
+                RecentScores[count].Score = RecentScores[count+1].Score
+                RecentScores[count].Date = RecentScores[count+1].Date
+                RecentScores[count].Name = RecentScores[count+1].Name
+                RecentScores[count+1].Score = tempScore
+                RecentScores[count+1].Date = tempDate
+                RecentScores[count+1].Name = tempName
+                swap_made = True
+    return RecentScores
+
+
 def DisplayRecentScores(RecentScores):
   print()
   print('Recent Scores: ')
@@ -334,13 +354,14 @@ if __name__ == '__main__':
     DisplayMenu()
     Choice = GetMenuChoice()
     if Choice == '1':
-      qLoadDeck(Deck)
+      LoadDeck(Deck)
       ShuffleDeck(Deck)
       PlayGame(Deck, RecentScores)
     elif Choice == '2':
       LoadDeck(Deck)
       PlayGame(Deck, RecentScores)
     elif Choice == '3':
+      RecentScores = BubbleSortScores(RecentScores)
       DisplayRecentScores(RecentScores)
     elif Choice == '4':
       ResetRecentScores(RecentScores)
