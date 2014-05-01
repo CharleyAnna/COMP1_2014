@@ -1,4 +1,3 @@
-
 # Skeleton Program code for the AQA COMP1 Summer 2014 examination
 # this code should be used in conjunction with the Preliminary Material
 # written by the AQA Programmer Team
@@ -101,6 +100,8 @@ def GetMenuChoice():
       Valid = True
     elif Choice == "5":
       Valid = True
+    elif Choice == "6":
+      Valid = True
     else:
       print("That was not a valid menu choice, please try again: ")
   return Choice
@@ -202,6 +203,7 @@ def IsNextCardHigher(LastCard, NextCard):
 
 def GetPlayerName():
   HighScore = input("Do you want to add your score to the high score table? (Y or N): ").lower()
+  HighScore = HighScore[0]
   print()
   if HighScore == "y":
     Valid = False
@@ -212,14 +214,6 @@ def GetPlayerName():
       else:
         Valid = True
         return PlayerName
-  elif HighScore == "yes":
-    PlayerName = input('Please enter your name: ')
-    if PlayerName == '':
-      print("You must enter something for your name!")
-    else:
-      Valid = True
-      return PlayerName
-    print()
   else:
     print("Your score will not be added")
   
@@ -290,7 +284,7 @@ def DisplayRecentScores(RecentScores):
   print("{0:<10} {1:<10} {2:<10}".format("Name", "Date" ,"Score"))
   print()
   for Count in range(1, NO_OF_RECENT_SCORES + 1):
-    print("{0:<10} {1:<10} {2:<10}".format(RecentScores[Count].Name.ljust(10), RecentScores[Count].Date.ljust(10), RecentScores[Count].Score))
+    print("{0:<10} {1:<10} {2:<10}".format(RecentScores[Count].Name, RecentScores[Count].Date, RecentScores[Count].Score))
   print()
   print('Press the Enter key to return to the main menu')
   input()
@@ -317,9 +311,11 @@ def UpdateRecentScores(RecentScores, Score):
   RecentScores[Count].Date = Date
 
 def SaveScores(RecentScores):
-  with open ("RecentScores.txt", mode = "wb") as my_file:
-    finished = False
-
+  with open ("save_scores.txt", mode = "w", encoding = "utf-8") as my_file:
+    for Score in RecentScores:
+      my_file.write(Score)
+        
+        
 def PlayGame(Deck, RecentScores):
   LastCard = TCard()
   NextCard = TCard()
@@ -374,3 +370,5 @@ if __name__ == '__main__':
       DisplayOptionsMenu()
       OptionChoice = GetOptionChoice()
       SetOptions(OptionChoice)
+    elif Choice == "6":
+      SaveScores(RecentScores)
