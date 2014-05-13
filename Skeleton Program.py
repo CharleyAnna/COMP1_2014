@@ -259,20 +259,14 @@ def ResetRecentScores(RecentScores):
 def BubbleSortScores(RecentScores):
     list_length = len(RecentScores)
     swap_made = True
-    while swap_made == True:
+    while swap_made:
         swap_made = False
         list_length = list_length-1
         for count in range (1,list_length):
             if RecentScores[count].Score < RecentScores[count+1].Score:
-                tempScore = RecentScores[count].Score
-                tempDate = RecentScores[count].Date
-                tempName = RecentScores[count].Name
-                RecentScores[count].Score = RecentScores[count+1].Score
-                RecentScores[count].Date = RecentScores[count+1].Date
-                RecentScores[count].Name = RecentScores[count+1].Name
-                RecentScores[count+1].Score = tempScore
-                RecentScores[count+1].Date = tempDate
-                RecentScores[count+1].Name = tempName
+                temp = RecentScores[count]
+                RecentScores[count] = RecentScores[count+1]
+                RecentScores[count+1] = temp
                 swap_made = True
     return RecentScores
 
@@ -312,8 +306,24 @@ def UpdateRecentScores(RecentScores, Score):
 
 def SaveScores(RecentScores):
   with open ("save_scores.txt", mode = "w", encoding = "utf-8") as my_file:
-    for Score in RecentScores:
-      my_file.write(Score)
+    for count in range(1,len(RecentScores)):
+      save_score = ("{0} {1} {2}\n".format(RecentScores[count].Name, RecentScores[count].Date, RecentScores[count].Score))
+      my_file.write(save_score)
+  print()
+  print("Scores saved")
+
+def LoadScores():
+  global RecentScores
+  List = []
+  with open("save_scores.txt", mode = "r") as my_file:
+    for line in my_file:
+      List.append(line)
+  counter = 1
+  for count in range (0, len(List), 3):
+    RecentScores[counter].Name = List[count].rstrip("\n")
+    RecentScores[counter].Date = List[count+1].rstrip("\n")
+    RecentScores[counter].Score = List[count+1].rstrip("\n")
+    counter += 1
         
         
 def PlayGame(Deck, RecentScores):
@@ -352,6 +362,7 @@ if __name__ == '__main__':
     RecentScores.append(TRecentScore())
   Choice = None
   while Choice != 'q':
+    LoadScores()
     DisplayMenu()
     Choice = GetMenuChoice()
     if Choice == '1':
